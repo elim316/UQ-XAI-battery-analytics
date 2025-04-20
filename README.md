@@ -42,7 +42,7 @@ Evaluated across:
 
 ---
 
-### 📉 Uncertainty Quantification
+### Uncertainty Quantification
 
 - **Monte Carlo Dropout** for model uncertainty  
 - **Gaussian noise injection** for data uncertainty  
@@ -56,7 +56,7 @@ Evaluated across:
 
 ---
 
-## 📊 Datasets Used
+## Datasets Used
 
 - **Oxford Battery Dataset**
 - **McMaster Battery Dataset**  
@@ -64,7 +64,7 @@ Trained on McMaster, tested on Oxford for generalisability.
 
 ---
 
-## 👨‍💻 My Contributions
+## My Contributions
 
 - Built CNN architecture for SOH estimation
 - Integrated 4 XAI methods with post-hoc evaluation pipeline
@@ -75,7 +75,7 @@ Trained on McMaster, tested on Oxford for generalisability.
 
 ---
 
-## 📚 What I Learned
+## What I Learned
 
 - Real-world application of explainability techniques in battery health analytics
 - Building models with **quantified trust** — beyond accuracy
@@ -84,7 +84,7 @@ Trained on McMaster, tested on Oxford for generalisability.
 
 ---
 
-## 🔐 Note
+## Note
 
 Due to the nature of the research collaboration, source code and raw datasets may not be publicly available. This case study serves to document methodology and technical contributions.
 
