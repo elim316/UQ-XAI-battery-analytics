@@ -1,91 +1,43 @@
-# Uncertainty & Explainability in Battery Management AI Systems
+# Uncertainty Quantification and Explainable AI for Battery Analytics
 
-![Research Project](https://img.shields.io/badge/Project-Research-blue)
-![Focus](https://img.shields.io/badge/Focus-Explainable%20AI%20%7C%20Uncertainty%20Quantification-purple)
-![Domain](https://img.shields.io/badge/Domain-Battery%20Analytics-orange)
-![Built With](https://img.shields.io/badge/Built%20With-Python-yellow)
-![Models](https://img.shields.io/badge/Model-CNN-lightblue)
-![Explainability](https://img.shields.io/badge/XAI-Techniques%3A%20SHAP%20%7C%20LIME-green)
-![Calibration](https://img.shields.io/badge/Calibration-ACI%20%7C%20PICP%20%7C%20ECE-red)
-
----
+Companion case study for the peer-reviewed paper published in IEEE Xplore: [Document 11249263](https://ieeexplore.ieee.org/document/11249263).
 
 ## Overview
 
-This project explores the application of **uncertainty quantification (UQ)** and **explainable AI (XAI)** to deep learning models used in **battery state-of-health (SOH) estimation**. The system is part of a **cognitive digital twin** for advanced battery analytics.
+This research applies uncertainty quantification (UQ) and post-hoc explainable AI (XAI) to convolutional neural networks (CNNs) used for lithium-ion battery state-of-health (SOH) estimation inside a cognitive digital twin pipeline.
 
----
+In safety-critical battery management systems, point predictions alone are insufficient. Operators need calibrated confidence intervals alongside interpretable feature attributions to understand why a model predicts capacity degradation and how much trust to place in each estimate.
 
 ## Objectives
 
-- Quantify **model and data uncertainty** in battery health predictions
-- Implement and evaluate **explainability techniques** for CNN predictions
-- Ensure traceability and reliability of model outputs in **real-time battery management systems**
-- Evaluate robustness and generalisability across multiple datasets
+- Quantify both epistemic (model) and aleatoric (data) uncertainty in CNN state-of-health predictions.
+- Compare post-hoc explainability methods on fidelity, consistency, and stability metrics.
+- Evaluate cross-dataset generalisability by training on the McMaster Battery Dataset and testing on the Oxford Battery Dataset.
 
----
-
-## Techniques & Frameworks
+## Methodology
 
 ### Explainability (XAI)
-- SHAP
-- LIME
+
+Four attribution methods were integrated and benchmarked across Mean Absolute Error (fidelity), R-squared (consistency), and counterfactual validity (stability):
+
+- SHAP (SHapley Additive exPlanations), which achieved the strongest stability and fidelity across degradation cycles
+- LIME (Local Interpretable Model-agnostic Explanations)
 - Integrated Gradients
 - Counterfactual Explanations
 
-Evaluated across:  
-- Fidelity (MAE)  
-- Consistency (R²)  
-- Stability (Counterfactual Validity)
+### Uncertainty Quantification and Calibration
 
-✅ **SHAP** showed the most robust and interpretable results.
+- Monte Carlo Dropout to capture epistemic model uncertainty
+- Gaussian noise injection to model aleatoric sensor uncertainty
+- Adaptive Conformal Inference (ACI) to construct calibrated prediction intervals combining both uncertainty sources
+- Evaluated using Prediction Interval Coverage Probability (PICP), Mean Prediction Interval Width (MPIW), Expected Calibration Error (ECE), and Maximum Calibration Error (MCE)
 
----
+## Key Contributions
 
-### Uncertainty Quantification
+- Designed the CNN architecture and training pipeline for battery state-of-health estimation.
+- Implemented the Adaptive Conformal Inference (ACI) wrapper and calibration evaluators (ECE, MCE, PICP).
+- Built the four-method XAI evaluation benchmark and a Streamlit visualiser to inspect degradation curves, feature attributions, and confidence bands interactively.
 
-- **Monte Carlo Dropout** for model uncertainty  
-- **Gaussian noise injection** for data uncertainty  
-- **Adaptive Confidence Intervals (ACI)** to combine both sources
-- **Predictive Certainty Ranges**, **MPIW**, and under/overconfidence analysis
+## Note on Data Availability
 
-#### Calibration Metrics:
-- ECE
-- MCE
-- PICP
-
----
-
-## Datasets Used
-
-- **Oxford Battery Dataset**
-- **McMaster Battery Dataset**  
-Trained on McMaster, tested on Oxford for generalisability.
-
----
-
-## My Contributions
-
-- Built CNN architecture for SOH estimation
-- Integrated 4 XAI methods with post-hoc evaluation pipeline
-- Designed the **Adaptive Confidence Interval** (ACI) framework
-- Implemented ECE, MCE, and PICP metrics for uncertainty evaluation
-- Designed a **Streamlit-based interface** to visualise predictions, explanations, and confidence bands
-- Conducted comparative analysis of explainability tools and uncertainty calibration methods
-
----
-
-## What I Learned
-
-- Real-world application of explainability techniques in battery health analytics
-- Building models with **quantified trust** — beyond accuracy
-- Combining probabilistic reasoning with deep learning predictions
-- Evaluating model generalisability under noisy/shifted data conditions
-
----
-
-## Note
-
-Due to the nature of the research collaboration, source code and raw datasets may not be publicly available. This case study serves to document methodology and technical contributions.
-
----
+Because this work was conducted under a research collaboration, raw experimental datasets and proprietary model weights are not stored in this public repository. Please refer to the [IEEE Xplore publication](https://ieeexplore.ieee.org/document/11249263) for full experimental results and equations.
